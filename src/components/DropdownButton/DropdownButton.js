@@ -2,12 +2,18 @@ import React, { useState } from 'react';
 import Listen from '../Listen/Listen';
 
 const DropdownButton = (props) => {
+	console.log(props, 'dropdown array props');
 	const [ value, setValue ] = useState('');
 
 	const handleChange = (e) => {
 		setValue(e.target.value);
 	};
+
+	//
+
 	console.log({ value });
+	// console.log(database());
+
 	return (
 		<div>
 			<form>

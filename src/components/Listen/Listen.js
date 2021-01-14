@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+
+import CardList from '../CardList/CardList';
 
 const Listen = (props) => {
 	const [ podcasts, setPodcasts ] = useState([]);
@@ -24,12 +26,7 @@ const Listen = (props) => {
 			}
 		).then((response) => {
 			response.json().then(async (data) => {
-				console.log('Listen 23 data', data.podcasts);
-				const { description, title, website } = data.podcasts[0];
-				console.log('destructuring', description, title, website);
-				console.log('testing', data.podcasts[0]);
 				setPodcasts([
-					...podcasts,
 					{
 						value: data
 					}
@@ -40,11 +37,16 @@ const Listen = (props) => {
 			});
 		});
 	};
+	// useEffect(() => {
+	// 	// action on update of movies
+	// 	onClickChange();
+	// }, []);
 
 	return (
 		<div>
-			<h1>"Testing"</h1>
-			<button onClick={onClickChange}>Click</button>
+			{/* <h1>"Testing"</h1>
+			<button onClick={onClickChange}>Click</button> */}
+			<CardList podcasts={podcasts} />
 		</div>
 	);
 };

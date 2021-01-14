@@ -3,10 +3,10 @@ import categoriesArray from '../category-list';
 let array1 = [];
 let array2 = [];
 // DIVIDE ARRAY INTO SELECTION BOX 1
-for (let i = 0; i < 82; i++) {
+for (let i = 0; i < 80; i++) {
 	array1.push(categoriesArray[i]);
 }
-for (let i = 82; i < categoriesArray.length; i++) {
+for (let i = 80; i < categoriesArray.length; i++) {
 	array2.push(categoriesArray[i]);
 }
 // array.forEach((item) => {
