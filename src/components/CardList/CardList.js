@@ -2,21 +2,23 @@ import React from 'react';
 import './CardList.css';
 import Card from '../Card/Card';
 
-const CardList = ({ podcasts }) => {
-	console.log('props in CardList', podcasts[0]);
+// const CardList = ({ podcasts }) => {
+const CardList = (props) => {
+	console.log('props in CardList', props);
 	return (
-		<div>
-			<h1>
-				{/* {podcasts[0] && podcasts[0].value.podcasts[0].title} */}
-				{podcasts[0] && (
-					<div>
-						{podcasts[0].value.podcasts.map((item) => {
-							// return item.value.podcasts[0].title;
-							return <Card key={item.id} item={item} />;
-						})}
-					</div>
-				)}
-			</h1>
+		<div className="card-list-container">
+			{/* {podcasts[0] && podcasts[0].value.podcasts[0].title} */}
+			{props.podcasts[0] && (
+				<div classname="card-container">
+					{props.podcasts.map((item) => {
+						// return item.value.podcasts[0].title;
+						return <Card key={item.id} item={item} />;
+					})}
+				</div>
+			)}
+			{/* <p> */}
+			{/* <Card item={props.podcasts} name={'John'} /> */}
+			{/* </p> */}
 		</div>
 	);
 };

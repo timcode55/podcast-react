@@ -16,7 +16,7 @@ const DropdownButton = (props) => {
 
 	return (
 		<div>
-			<form>
+			{/* <form>
 				<label>
 					<span className="dropdown-title">Choose a Genre</span>
 					<select onChange={handleChange}>
@@ -29,8 +29,8 @@ const DropdownButton = (props) => {
 						})}
 					</select>
 				</label>
-			</form>
-			<Listen category={value} />
+			</form> */}
+			{/* <Listen category={value} onChange={handleChange} /> */}
 		</div>
 	);
 };

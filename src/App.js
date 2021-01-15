@@ -11,9 +11,6 @@ function App() {
 			<div className="main-header">
 				<h1>TOP PODCASTS - TECHNOLOGY</h1>
 				<Header />
-				{/* <Listen /> */}
-				<DropdownButton options={array1} />
-				<DropdownButton options={array2} />
 			</div>
 		</div>
 	);

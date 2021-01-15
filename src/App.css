@@ -1,4 +1,11 @@
 .main-header {
 	display: flex;
-	justify-content: space-around;
+	/* justify-content: center;
+   */
+	flex-direction: column;
+	width: 1200px;
+}
+
+.App {
+	display: flex;
 }

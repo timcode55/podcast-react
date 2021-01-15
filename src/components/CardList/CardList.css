@@ -2,8 +2,20 @@ html {
 	background-color: grey;
 }
 
-main-container {
+/* main-container {
 	display: flex;
 	margin-top: 200px;
 	background-color: grey;
+} */
+
+.card-container {
+	display: flex;
+	flex-direction: row;
+	width: 30px;
 }
+
+/* .card-list-container {
+	display: flex;
+	flex-direction: row;
+	width: 10px;
+} */
