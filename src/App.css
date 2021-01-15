@@ -1,11 +1,17 @@
 .main-header {
 	display: flex;
-	/* justify-content: center;
-   */
-	flex-direction: column;
-	width: 1200px;
+	justify-content: space-between;
+	/* align-items: center; */
 }
 
+.main-header h1 {
+	margin-left: 70px;
+}
 .App {
+	display: flex;
+	flex-direction: row;
+}
+
+.cardlist-container-gap {
 	display: flex;
 }

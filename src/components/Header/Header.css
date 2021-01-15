@@ -1,7 +1,12 @@
 .selection-boxes {
 	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	margin-top: 30px;
-	margin: 100px;
+
+	/* justify-content: space-between; */
+	/* align-items: center; */
+	/* margin-top: 30px; */
+	/* margin: 100px; */
+}
+
+div form {
+	margin: 50px;
 }

@@ -10,6 +10,7 @@ function App() {
 		<div className="App">
 			<div className="main-header">
 				<h1>TOP PODCASTS - TECHNOLOGY</h1>
+
 				<Header />
 			</div>
 		</div>
