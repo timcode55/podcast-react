@@ -8,14 +8,22 @@ html {
 	background-color: grey;
 } */
 
-.card-container {
+/* .card-container {
 	display: flex;
 	flex-direction: column;
 	width: 30px;
-}
+} */
 
 /* .card-list-container {
 	display: flex;
 	flex-direction: row;
 	width: 10px;
 } */
+
+.CardList {
+	width: 85vw;
+	margin: 0 auto;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+	grid-gap: 20px;
+}

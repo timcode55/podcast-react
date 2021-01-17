@@ -1,17 +1,16 @@
-.main-header {
-	display: flex;
-	justify-content: space-between;
-	/* align-items: center; */
-}
-
-.main-header h1 {
-	margin-left: 70px;
-}
 .App {
 	display: flex;
-	flex-direction: row;
+	justify-content: center;
+	/* flex-direction: column; */
+	/* justify-content: center; */
+	/* text-align: center; */
 }
 
-.cardlist-container-gap {
+/* .app-main {
 	display: flex;
+} */
+
+.App h1,
+.App p {
+	text-align: center;
 }
