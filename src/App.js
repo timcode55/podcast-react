@@ -30,6 +30,51 @@ function App() {
 	const getListenNotes = () => {
 		console.log(listenNotesPodcasts, 'listennotesarray');
 		setState({ podcasts: [ listenNotesPodcasts ] });
+
+		for (let pod of listenNotesPodcasts) {
+			axios
+				.post('/addpodcast', {
+					title: pod.title,
+					rating: '',
+					numberOfRatings: '',
+					genre: '',
+					description: pod.description,
+					website: pod.website,
+					itunes: '',
+					categoryid: '',
+					itunesid: pod.itunes_id,
+					listennotesurl: pod.listennotes_url
+				})
+				.then((response) => {
+					console.log(response.data);
+				});
+		}
+	};
+
+	const getItunesData = () => {
+		for (let pod of listenNotesPodcasts) {
+      axios.get(`https://itunes.apple.com/lookup?id=${pod.itunes_id}`)
+      .then(error, response, body) => {
+        if (error || response.statusCode !== 200) {
+          return res.status(500).json({ type: 'error', message: err.message });
+        }
+    
+        res.json(JSON.parse(body));
+      };
+
+
+
+
+
+			// axios
+			// 	.post('/updatepodcast', {
+			// 		id: '5fd59708ddf9aa082b90247c',
+			// 		brand: 'Chery'
+			// 	})
+			// 	.then((response) => {
+			// 		this.getCars();
+			// 	});
+		}
 	};
 
 	// useEffect(() => {
