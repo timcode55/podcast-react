@@ -35,6 +35,7 @@ function App() {
 			axios
 				.post('/addpodcast', {
 					title: pod.title,
+					image: pod.image,
 					rating: '',
 					numberOfRatings: '',
 					genre: '',
@@ -49,41 +50,25 @@ function App() {
 					console.log(response.data);
 				});
 		}
+		getItunesData();
 	};
 
-	const getItunesData = () => {
+	const getItunesData = async () => {
+		const iTunesUrlArray = [];
 		for (let pod of listenNotesPodcasts) {
-      axios.get(`https://itunes.apple.com/lookup?id=${pod.itunes_id}`)
-      .then(error, response, body) => {
-        if (error || response.statusCode !== 200) {
-          return res.status(500).json({ type: 'error', message: err.message });
-        }
-    
-        res.json(JSON.parse(body));
-      };
-
-
-
-
-
-			// axios
-			// 	.post('/updatepodcast', {
-			// 		id: '5fd59708ddf9aa082b90247c',
-			// 		brand: 'Chery'
-			// 	})
-			// 	.then((response) => {
-			// 		this.getCars();
-			// 	});
+			try {
+				const response = await axios.get(`https://itunes.apple.com/lookup?id=${pod.itunes_id}`);
+				iTunesUrlArray.push(response.data.results[0].trackViewUrl);
+			} catch (error) {
+				iTunesUrlArray.push('https://podcasts.apple.com');
+			}
 		}
-	};
 
-	// useEffect(() => {
-	// 	async function loadData() {
-	// 		await axios.get('/topTwenty').then((response) => setState({ podcasts: [ response.data ] }));
-	// 		console.log(state, 'state in useffect');
-	// 	}
-	// 	loadData();
-	// }, []);
+		console.log('iTunesUrlArray', iTunesUrlArray);
+		axios.post('/itunesdb', { urls: iTunesUrlArray }).then(function(response) {
+			console.log(response.data);
+		});
+	};
 
 	return (
 		<div>
@@ -93,6 +78,7 @@ function App() {
 					<button onClick={getPodcasts}>Get Podcasts</button>
 					<button onClick={getTopTwenty}>Get Top Twenty</button>
 					<button onClick={getListenNotes}>Get Listen Notes</button>
+					<button onClick={getItunesData}>Get Itunes Data</button>
 					<Header podcasts={state.podcasts} />
 				</div>
 				{/* <CardList podcasts={state.podcasts} /> */}
