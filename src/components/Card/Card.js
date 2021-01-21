@@ -26,17 +26,17 @@ const Card = (props) => {
 				<h1>{props.podcast.title.substring(0, 52)}</h1>
 			</div>
 			<div className="desc">
-				<p className="ptext">{props.podcast.title.substring(0, 200).replace(/(<([^>]+)>)/gi, '')}...</p>
+				<p className="ptext">{props.podcast.description.substring(0, 200).replace(/(<([^>]+)>)/gi, '')}...</p>
 			</div>
 			<div className="podButtons">
 				<div className="webButton">
-					<a href={props.podcast.url} target="_blank" rel="noreferrer">
+					<a href={props.podcast.website} target="_blank" rel="noreferrer">
 						<button>Website</button>
 					</a>
 				</div>
 
 				<div className="webButton">
-					<a href={props.podcast.url} target="_blank" rel="noreferrer">
+					<a href={props.podcast.itunes} target="_blank" rel="noreferrer">
 						<button>iTunes Link</button>
 					</a>
 				</div>

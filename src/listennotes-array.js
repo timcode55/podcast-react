@@ -7,7 +7,7 @@ const listenNotesPodcasts = [
 		extra: '{...}',
 		image:
 			'https://cdn-images-1.listennotes.com/podcasts/industry-focus-the-motley-fool-FgnhDWrQi4v-_HkAQ1m8DZy.1400x1400.jpg',
-		title: 'Industry Anti-Focus',
+		title: 'Industry Anti-Focus - NO DUPLICATES',
 		country: 'United States',
 		website:
 			'https://www.fool.com/podcasts/industry-focus?utm_source=listennotes.com&utm_campaign=Listen+Notes&utm_medium=website',
