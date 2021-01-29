@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import './Card.css';
 import icons8 from '../../images/Hashtag-26-52px/icons8-hashtag-52.png';
 import rating from '../../images/Star-24-48px/icons8-star-48.png';
+import { PodcastContext } from '../../context/PodcastContext';
 
 const Card = (props) => {
+	const [ podcasts, setPodcasts ] = useContext(PodcastContext);
 	console.log(props, 'props in Card');
+	useEffect(() => {
+		setPodcasts({ name: 'adding stuff from the card component', price: '$1000', id: 7843 });
+	}, []);
+
 	return (
 		<div className="podcontainer">
 			<div className="image">
@@ -31,7 +37,13 @@ const Card = (props) => {
 			<div className="podButtons">
 				<div className="webButton">
 					<a href={props.podcast.website} target="_blank" rel="noreferrer">
-						<button>Website</button>
+						<button
+							onClick={() => {
+								setPodcasts({ name: 'changed state after click', price: '$541', id: 7391 });
+							}}
+						>
+							Website
+						</button>
 					</a>
 				</div>
 

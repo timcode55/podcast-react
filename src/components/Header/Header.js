@@ -1,23 +1,42 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 // import DropdownButton from '../DropdownButton/DropdownButton';
 // import Listen from '../Listen/Listen';
 import CardList from '../CardList/CardList';
 // import Gap from '../../components/gap/Gap';
 import { array1, array2 } from '../../utils/splitCategories';
 import './Header.css';
+import { PodcastContext } from '../../context/PodcastContext';
 
 const Header = (props) => {
+	const [ podcasts, setPodcasts ] = useContext(PodcastContext);
 	console.log(props, 'props in Header');
 	const [ value, setValue ] = useState('');
 
 	const handleChange = (e) => {
 		setValue(e.target.value);
+		// setPodcasts({ name: 'changing setpodcasts in Header after selection box changed', price: '$4751', id: 5894 });
+		// setPodcasts((podcasts) => ({
+		// 	...podcasts,
+		// 	name: 'changing setpodcasts in Header after selection box changed',
+		// 	price: '$4751',
+		// 	id: 5894,
+		// 	value: { value }
+		// }));
 	};
 
-	useEffect(() => {
-		console.log('useeffect ran in Header.js');
-		document.title = `UseEffect ${value}`;
-	});
+	useEffect(
+		() => {
+			console.log('useeffect ran in Header.js');
+			setPodcasts((podcasts) => ({
+				...podcasts,
+				name: 'changing setpodcasts in Header after selection box changed',
+				price: '$4751',
+				id: 5894,
+				value: { value }
+			}));
+		},
+		[ value ]
+	);
 	// console.log(array1, array2);
 	return (
 		<div className="test">

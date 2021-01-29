@@ -5,6 +5,8 @@ import './App.css';
 import CardList from './components/CardList/CardList';
 import Header from './components/Header/Header';
 import listenNotesPodcasts from './listennotes-array';
+import { PodcastProvider } from './context/PodcastContext';
+import { PodcastContext } from './context/PodcastContext';
 
 function App() {
 	const [ state, setState ] = useState({
@@ -71,7 +73,7 @@ function App() {
 	};
 
 	return (
-		<div>
+		<PodcastProvider value="will">
 			<div className="App">
 				<div className="app-main">
 					<h1>TOP PODCASTS</h1>
@@ -83,7 +85,7 @@ function App() {
 				</div>
 				{/* <CardList podcasts={state.podcasts} /> */}
 			</div>
-		</div>
+		</PodcastProvider>
 	);
 }
 
