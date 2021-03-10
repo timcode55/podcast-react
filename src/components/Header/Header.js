@@ -3,7 +3,7 @@ import React, { useState, useEffect, useContext } from 'react';
 // import Listen from '../Listen/Listen';
 import CardList from '../CardList/CardList';
 // import Gap from '../../components/gap/Gap';
-import { array1, array2 } from '../../utils/splitCategories';
+import { array1, array2 } from '../../utils/category-list';
 import './Header.css';
 import { PodcastContext } from '../../context/PodcastContext';
 
@@ -14,33 +14,28 @@ const Header = (props) => {
 
 	const handleChange = (e) => {
 		setValue(e.target.value);
-		// setPodcasts({ name: 'changing setpodcasts in Header after selection box changed', price: '$4751', id: 5894 });
-		// setPodcasts((podcasts) => ({
-		// 	...podcasts,
-		// 	name: 'changing setpodcasts in Header after selection box changed',
-		// 	price: '$4751',
-		// 	id: 5894,
-		// 	value: { value }
-		// }));
+		console.log(e.target.value);
+		props.getApiData(e.target.value);
 	};
 
-	useEffect(
-		() => {
-			console.log('useeffect ran in Header.js');
-			setPodcasts((podcasts) => ({
-				...podcasts,
-				name: 'changing setpodcasts in Header after selection box changed',
-				price: '$4751',
-				id: 5894,
-				value: { value }
-			}));
-		},
-		[ value ]
-	);
+	// useEffect(
+	// 	() => {
+	// 		console.log('useeffect ran in Header.js');
+	// 		setPodcasts((podcasts) => ({
+	// 			...podcasts,
+	// 			// name: 'changing setpodcasts in Header after selection box changed',
+	// 			// price: '$4751',
+	// 			// id: 5894,
+	// 			value: { value }
+	// 		}));
+	// 	},
+	// 	[ value ]
+	// );
 	// console.log(array1, array2);
 	return (
 		<div className="test">
 			<div className="header-main">
+				<h1>TOP PODCASTS - </h1>
 				<form className="select">
 					<label>
 						<span className="dropdown-title">Choose a Genre</span>
@@ -71,7 +66,7 @@ const Header = (props) => {
 					</label>
 				</form>
 			</div>
-			<CardList podcasts={props} category={parseInt(value)} />
+			<CardList podcasts={props} category={parseInt(value)} getApiData={props.getApiData} />
 		</div>
 	);
 };

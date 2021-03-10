@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 // import CardList from './/components/CardList/CardList';
 import axios from 'axios';
 import './App.css';
@@ -13,77 +13,100 @@ function App() {
 		podcasts: []
 	});
 
-	const getPodcasts = () => {
-		axios.get('/podcasts').then((response) => {
-			console.log('button clicked');
-			setState({ podcasts: [ response.data ] });
-			console.log(response.data);
-		});
-	};
-
-	const getTopTwenty = () => {
-		axios.get('/topTwenty').then((response) => {
-			console.log('button clicked');
-			setState({ podcasts: [ response.data ] });
-			console.log(response.data);
-		});
-	};
-
-	const getListenNotes = () => {
-		console.log(listenNotesPodcasts, 'listennotesarray');
-		setState({ podcasts: [ listenNotesPodcasts ] });
-
-		for (let pod of listenNotesPodcasts) {
-			axios
-				.post('/addpodcast', {
-					title: pod.title,
-					image: pod.image,
-					rating: '',
-					numberOfRatings: '',
-					genre: '',
-					description: pod.description,
-					website: pod.website,
-					itunes: '',
-					categoryid: '',
-					itunesid: pod.itunes_id,
-					listennotesurl: pod.listennotes_url
-				})
-				.then((response) => {
-					console.log(response.data);
-				});
-		}
-		getItunesData();
-	};
-
-	const getItunesData = async () => {
-		const iTunesUrlArray = [];
-		for (let pod of listenNotesPodcasts) {
-			try {
-				const response = await axios.get(`https://itunes.apple.com/lookup?id=${pod.itunes_id}`);
-				iTunesUrlArray.push(response.data.results[0].trackViewUrl);
-			} catch (error) {
-				iTunesUrlArray.push('https://podcasts.apple.com');
+	const getApiData = (genreId) => {
+		// let genreId = 67;
+		console.log(genreId, 'genreId Listen');
+		let page = 1;
+		fetch(
+			'https://listen-api.listennotes.com/api/v2/best_podcasts?genre_id=' +
+				genreId +
+				'&page=' +
+				page +
+				'&region=us&safe_mode=0',
+			{
+				method: 'GET',
+				headers: {
+					'Content-Type': 'application/json',
+					'X-ListenAPI-Key': process.env.REACT_APP_LISTEN_NOTES_API_KEY
+				},
+				credentials: 'same-origin'
 			}
-		}
+		).then((response) => {
+			response.json().then((data) => {
+				console.log(data, 'main data from listen notes');
+				const getRating = async () => {
+					for (let pod of data.podcasts) {
+						const id = pod.id;
+						const response = await axios({
+							method: 'post',
+							url: '/findId',
+							data: {
+								id: id
+							}
+						})
+							.then(function(response) {
+								pod['rating'] = response.data.rating;
+								pod['numberOfRatings'] = response.data.numberOfRatings || 'N/A';
+								pod['itunes'] = response.data.itunes;
+							})
+							.catch(function(error) {
+								console.log(error);
+							});
+					}
+					const test = await setState({ podcasts: [ data.podcasts ] });
+				};
+				getRating();
 
-		console.log('iTunesUrlArray', iTunesUrlArray);
-		axios.post('/itunesdb', { urls: iTunesUrlArray }).then(function(response) {
-			console.log(response.data);
+				console.log(data.podcasts, 'data.podcasts');
+			});
 		});
 	};
+
+	// useEffect(
+	// 	() => {
+	// 		for (let pod of state.podcasts) {
+	// 			const id = pod.id;
+	// 			const response = axios({
+	// 				method: 'post',
+	// 				url: '/findId',
+	// 				data: {
+	// 					id: id
+	// 				}
+	// 			})
+	// 				.then(function(response) {
+	// 					pod['rating'] = response.data.rating;
+	// 					pod['numberOfRatings'] = response.data.numberOfRatings || 'N/A';
+	// 					pod['itunes'] = response.data.itunes;
+	// 				})
+	// 				.catch(function(error) {
+	// 					console.log(error);
+	// 				});
+	// 		}
+	// 		console.log(state.podcasts, 'state ran in useEffect');
+	// 		console.log(state.podcasts, 'state ran in useEffect');
+	// 	},
+	// 	[ state ]
+	// );
+
+	// useEffect(
+	// 	() => {
+	// 		const test = axios({
+	// 			method: 'post',
+	// 			url: '/test',
+	// 			data: { id: '4872ebcafa5d477d9ee835f633defa1c' }
+	// 		}).then((response) => {
+	// 			console.log(response.data, 'response.data');
+	// 		});
+	// 	},
+	// 	[ state ]
+	// );
 
 	return (
 		<PodcastProvider value="will">
 			<div className="App">
 				<div className="app-main">
-					<h1>TOP PODCASTS</h1>
-					<button onClick={getPodcasts}>Get Podcasts</button>
-					<button onClick={getTopTwenty}>Get Top Twenty</button>
-					<button onClick={getListenNotes}>Get Listen Notes</button>
-					<button onClick={getItunesData}>Get Itunes Data</button>
-					<Header podcasts={state.podcasts} />
+					<Header podcasts={state.podcasts} getApiData={getApiData} />
 				</div>
-				{/* <CardList podcasts={state.podcasts} /> */}
 			</div>
 		</PodcastProvider>
 	);
