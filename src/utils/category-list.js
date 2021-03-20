@@ -1,4 +1,4 @@
-const categoriesArray = [
+export const categoriesArray = [
 	{ id: 139, name: 'VR & AR', parent_id: 127 },
 	{ id: 140, name: 'Web Design', parent_id: 127 },
 	{ id: 142, name: 'English Learning', parent_id: 116 },

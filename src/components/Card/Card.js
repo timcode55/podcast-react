@@ -7,7 +7,8 @@ import rating from '../../images/Star-24-48px/icons8-star-48.png';
 const Card = (props) => {
 	// const [ podcasts, setPodcasts ] = useContext(PodcastContext);
 	const { podcast } = props;
-	console.log(podcast.rating, 'props in Card');
+	console.log(podcast, 'podcast props in card');
+	// console.log(podcast.rating, 'props in Card');
 	// useEffect(() => {
 	// 	setPodcasts({ name: 'adding stuff from the card component', price: '$1000', id: 7843 });
 	// }, []);

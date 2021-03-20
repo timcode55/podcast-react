@@ -37,13 +37,8 @@ function App() {
 				const getRating = async () => {
 					for (let pod of data.podcasts) {
 						const id = pod.id;
-						const response = await axios({
-							method: 'post',
-							url: 'https://podreact.timpetrvalsky.com/findId',
-							data: {
-								id: id
-							}
-						})
+						const response = await axios
+							.post(`/findId/?data=${id}`)
 							.then(function(response) {
 								pod['rating'] = response.data.rating;
 								pod['numberOfRatings'] = response.data.numberOfRatings || 'N/A';
