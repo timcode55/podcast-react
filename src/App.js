@@ -39,7 +39,7 @@ function App() {
 						const id = pod.id;
 						const response = await axios({
 							method: 'post',
-							url: '/findId',
+							url: 'https://podreact.timpetrvalsky.com/findId',
 							data: {
 								id: id
 							}
@@ -53,7 +53,7 @@ function App() {
 								console.log(error);
 							});
 					}
-					const test = await setState({ podcasts: [ data.podcasts ] });
+					const podState = await setState({ podcasts: [ data.podcasts ] });
 				};
 				getRating();
 
@@ -62,52 +62,9 @@ function App() {
 		});
 	};
 
-	// useEffect(
-	// 	() => {
-	// 		for (let pod of state.podcasts) {
-	// 			const id = pod.id;
-	// 			const response = axios({
-	// 				method: 'post',
-	// 				url: '/findId',
-	// 				data: {
-	// 					id: id
-	// 				}
-	// 			})
-	// 				.then(function(response) {
-	// 					pod['rating'] = response.data.rating;
-	// 					pod['numberOfRatings'] = response.data.numberOfRatings || 'N/A';
-	// 					pod['itunes'] = response.data.itunes;
-	// 				})
-	// 				.catch(function(error) {
-	// 					console.log(error);
-	// 				});
-	// 		}
-	// 		console.log(state.podcasts, 'state ran in useEffect');
-	// 		console.log(state.podcasts, 'state ran in useEffect');
-	// 	},
-	// 	[ state ]
-	// );
-
-	// useEffect(
-	// 	() => {
-	// 		const test = axios({
-	// 			method: 'post',
-	// 			url: '/test',
-	// 			data: { id: '4872ebcafa5d477d9ee835f633defa1c' }
-	// 		}).then((response) => {
-	// 			console.log(response.data, 'response.data');
-	// 		});
-	// 	},
-	// 	[ state ]
-	// );
-
 	return (
 		<PodcastProvider value="will">
-			<div className="App">
-				<div className="app-main">
-					<Header podcasts={state.podcasts} getApiData={getApiData} />
-				</div>
-			</div>
+			<Header podcasts={state.podcasts} getApiData={getApiData} />
 		</PodcastProvider>
 	);
 }

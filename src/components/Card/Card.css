@@ -1,4 +1,4 @@
-.main-container {
+/* .main-container {
 	display: flex;
 	flex-direction: row;
 }
@@ -10,13 +10,13 @@
 	min-width: 320px;
 	height: auto;
 	background-color: royalblue;
-	/* margin: 0 auto; */
+
 	filter: drop-shadow(4px 4px 10px #0d0d0e);
 
 	margin: 50px;
-}
+} */
 
-.image {
+/* .image {
 	display: flex;
 	justify-content: center;
 }
@@ -27,8 +27,8 @@
 }
 .image a {
 	width: 90%;
-	/* align-self: center; */
-}
+
+} */
 
 /* .card-container {
 	display: flex;
@@ -55,17 +55,17 @@
 	grid-gap: 50px;
 } */
 
-.podtitle {
+/* .podtitle {
 	color: rgb(1, 1, 1);
 	/* text-align: center; */
-	margin: 0 auto;
+/* margin: 0 auto;
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: .7rem;
 	padding-top: 10px;
 	height: 50px;
-}
+} */
 
-.desc {
+/* .desc {
 	color: white;
 	font-family: Arial, Helvetica, sans-serif;
 	text-align: center;
@@ -80,32 +80,29 @@
 .podimage {
 	width: 90%;
 	filter: drop-shadow(4px 4px 10px #0d0d0e);
-	/* margin: 0 auto; */
 	padding-top: 20px;
 	padding-bottom: 5px;
-}
+} */
 
-.webButton a {
-	/* text-align: center; */
-	/* margin-top: -20px; */
+/* .webButton a {
+	
 	margin: 15px;
-}
+} */
 
-.contratings {
+/* .contratings {
 	display: flex;
 	justify-content: space-around;
 	padding-bottom: 15px;
 
-	/* flex-direction: column; */
-}
 
-.podButtons {
+} */
+
+/* .podButtons {
 	display: flex;
 	justify-content: space-around;
 	padding-top: -50px;
 	margin-bottom: 50px;
-	/* padding-bottom: 20px; */
-}
+} */
 
 /* button {
 	width: 100px;
@@ -114,7 +111,7 @@
 	box-shadow: 0px 2px 2px #2a2b2a .3;
 } */
 
-button {
+/* button {
 	border: 1px solid black;
 	padding: 1em;
 	outline: none;
@@ -157,7 +154,7 @@ button {
 			height: 115%;
 		}
 	}
-}
+} */
 /* .contratings {
 	display: flex;
 	justify-content: space-around;
@@ -166,7 +163,7 @@ button {
 	padding-top: 10px;
 } */
 
-.footeritem {
+/* .footeritem {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -191,23 +188,4 @@ button {
 
 .fas {
 	color: black;
-}
-
-/* From Card2 */
-/* .card-container {
-	display: flex;
-	flex-direction: column;
-	background-color: #95dada;
-	border: 1px solid grey;
-	border-radius: 5px;
-	padding: 25px;
-	cursor: pointer;
-	-moz-osx-font-smoothing: grayscale;
-	backface-visibility: hidden;
-	transform: translateZ(0);
-	transition: transform 0.25s ease-out;
-}
-
-.card-container:hover {
-	transform: scale(1.05);
 } */

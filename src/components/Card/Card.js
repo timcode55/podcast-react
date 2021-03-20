@@ -13,61 +13,55 @@ const Card = (props) => {
 	// }, []);
 
 	return (
-		<div className="podcontainer">
-			<div className="image">
-				<a href={podcast.url} target="_blank" rel="noreferrer">
-					<img
-						className="podimage"
-						src={
-							podcast.image ? (
-								podcast.image
-							) : (
-								'https://upload.wikimedia.org/wikipedia/en/4/4b/The_Joe_Rogan_Experience_logo.jpg'
-							)
-						}
-						alt="pod1"
-					/>
-				</a>
-			</div>
-			<div className="podtitle">
-				<h1>{podcast.title.substring(0, 52)}</h1>
-			</div>
-			<div className="desc">
-				<p className="ptext">{podcast.description.substring(0, 200).replace(/(<([^>]+)>)/gi, '')}...</p>
-			</div>
-			<div className="podButtons">
-				<div className="webButton">
-					<a href={podcast.website} target="_blank" rel="noreferrer">
-						{/* <button
-							onClick={() => {
-								setPodcasts({ name: 'changed state after click', price: '$541', id: 7391 });
-							}}
-						>
-							Website
-						</button> */}
+		<div className="div-style">
+			<div className="podcontainer">
+				<div className="image">
+					<a href={podcast.url} target="_blank" rel="noreferrer">
+						<img
+							className="podimage"
+							src={
+								podcast.image ? (
+									podcast.image
+								) : (
+									'https://upload.wikimedia.org/wikipedia/en/4/4b/The_Joe_Rogan_Experience_logo.jpg'
+								)
+							}
+							alt="pod1"
+						/>
 					</a>
 				</div>
-				<div className="webButton">
-					<a href={podcast.website} target="_blank" rel="noreferrer">
-						<button>Website</button>
-					</a>
+				<div className="podtitle">
+					<h1>{podcast.title.substring(0, 52)}</h1>
 				</div>
-				<div className="webButton">
-					<a href={podcast.itunes} target="_blank" rel="noreferrer">
-						<button>iTunes Link</button>
-					</a>
+				<div className="desc">
+					<p className="ptext">{podcast.description.substring(0, 200).replace(/(<([^>]+)>)/gi, '')}...</p>
 				</div>
-			</div>
-			<div className="contratings">
-				<div className="footeritem">
-					<img className="ratingimage" src={icons8} alt="ratingimage" />
-					<p className="ratingtext"># of Ratings</p>
-					<p className="ratingtext">{podcast.numberOfRatings}</p>
+				<div className="podButtons">
+					<div className="webButton">
+						<a href={podcast.website} target="_blank" rel="noreferrer" />
+					</div>
+					<div className="webButton">
+						<a href={podcast.website} target="_blank" rel="noreferrer">
+							<button>Website</button>
+						</a>
+					</div>
+					<div className="webButton">
+						<a href={podcast.itunes} target="_blank" rel="noreferrer">
+							<button>iTunes Link</button>
+						</a>
+					</div>
 				</div>
-				<div className="footeritem">
-					<img className="ratingimage" src={rating} alt="ratingimage" />
-					<p className="ratingtext">iTunes Rating</p>
-					<p className="ratingtext">{podcast.rating}</p>
+				<div className="contratings">
+					<div className="footeritem">
+						<img className="ratingimage" src={icons8} alt="ratingimage" />
+						<p className="ratingtext"># of Ratings</p>
+						<p className="ratingtext">{podcast.numberOfRatings}</p>
+					</div>
+					<div className="footeritem">
+						<img className="ratingimage" src={rating} alt="ratingimage" />
+						<p className="ratingtext">iTunes Rating</p>
+						<p className="ratingtext">{podcast.rating}</p>
+					</div>
 				</div>
 			</div>
 		</div>

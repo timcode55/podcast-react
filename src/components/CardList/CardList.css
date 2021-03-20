@@ -1,6 +1,6 @@
-html {
+/* html {
 	background-color: grey;
-}
+} */
 
 /* main-container {
 	display: flex;
@@ -20,10 +20,10 @@ html {
 	width: 10px;
 } */
 
-.CardList {
+/* .CardList {
 	width: 85vw;
 	margin: 0 auto;
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
 	grid-gap: 20px;
-}
+} */

@@ -18,23 +18,9 @@ const Header = (props) => {
 		props.getApiData(e.target.value);
 	};
 
-	// useEffect(
-	// 	() => {
-	// 		console.log('useeffect ran in Header.js');
-	// 		setPodcasts((podcasts) => ({
-	// 			...podcasts,
-	// 			// name: 'changing setpodcasts in Header after selection box changed',
-	// 			// price: '$4751',
-	// 			// id: 5894,
-	// 			value: { value }
-	// 		}));
-	// 	},
-	// 	[ value ]
-	// );
-	// console.log(array1, array2);
 	return (
-		<div className="test">
-			<div className="header-main">
+		<div className="">
+			<div className="top-section">
 				<h1>TOP PODCASTS - </h1>
 				<form className="select">
 					<label>
