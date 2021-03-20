@@ -17,14 +17,14 @@ const Header = (props) => {
 	};
 
 	return (
-		<div className="">
+		<div>
 			<div className="top-section">
-				<h1 className="title">TOP PODCASTS - {category.toUpperCase()}</h1>
+				<h1 className="title">TOP PODCASTS - {category.toUpperCase() || 'most popular'.toUpperCase()}</h1>
 				<div className="selection-boxes">
 					<div className="selection-box">
-						<form className="select">
-							<label for="podcasts">
-								<span className="dropdown-title">Choose a Genre</span>
+						<form>
+							<label>
+								<span>Choose a Genre</span>
 							</label>
 							<select id="selection" name="scripts" onChange={handleChange}>
 								{array1.map((item) => {
@@ -38,8 +38,8 @@ const Header = (props) => {
 						</form>
 					</div>
 					<div className="selection-box">
-						<form className="select">
-							<label for="podcasts">
+						<form>
+							<label>
 								<span className="dropdown-title">Choose a Genre</span>
 								<select id="selection2" name="scripts" onChange={handleChange}>
 									{array2.map((item) => {
@@ -55,7 +55,7 @@ const Header = (props) => {
 					</div>
 				</div>
 			</div>
-			<CardList podcasts={props} category={parseInt(value)} getApiData={props.getApiData} />
+			<CardList podcasts={props} category={parseInt(value)} />
 		</div>
 	);
 };

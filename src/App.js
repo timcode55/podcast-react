@@ -13,9 +13,11 @@ function App() {
 		podcasts: []
 	});
 
+	useEffect(() => {
+		getApiData(67);
+	}, []);
 	const getApiData = (genreId) => {
-		// let genreId = 67;
-		console.log(genreId, 'genreId Listen');
+		// console.log(genreId, 'genreId Listen');
 		let page = 1;
 		fetch(
 			'https://listen-api.listennotes.com/api/v2/best_podcasts?genre_id=' +

@@ -1,0 +1,29 @@
+.fas {
+	color: black;
+}
+
+.page {
+	display: flex;
+	justify-content: center;
+	padding-bottom: 100px;
+}
+#right-arrow {
+	width: 50px;
+	cursor: pointer;
+}
+
+#left-arrow {
+	width: 50px;
+	margin-right: 20px;
+	visibility: hidden;
+	cursor: pointer;
+}
+
+.visible {
+	visibility: visible;
+}
+
+.fa-arrow-right {
+	width: 100px;
+	cursor: pointer;
+}
