@@ -18,8 +18,8 @@ const CardList = (props) => {
 						<div id="loader" />
 					</div>
 				)}
+				{props.podcasts.podcasts[0] ? <Arrow /> : null}
 			</div>
-			<Arrow />
 		</div>
 	);
 };

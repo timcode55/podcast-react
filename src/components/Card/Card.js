@@ -5,7 +5,7 @@ import rating from '../../images/Star-24-48px/icons8-star-48.png';
 
 const Card = (props) => {
 	const { podcast } = props;
-	console.log(podcast, 'podcast props in card');
+	// console.log(podcast, 'podcast props in card');
 
 	return (
 		<div className="div-style">

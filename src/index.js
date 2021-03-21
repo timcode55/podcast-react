@@ -2,10 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import { PodcastProvider } from './context/PodcastContext';
 
 ReactDOM.render(
-	<React.StrictMode>
+	<PodcastProvider value="will">
 		<App />
-	</React.StrictMode>,
+	</PodcastProvider>,
 	document.getElementById('root')
 );

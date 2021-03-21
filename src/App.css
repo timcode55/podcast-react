@@ -14,7 +14,7 @@ body {
 	transition: all ease-in-out 200ms;
 } */
 
-.img-link div {
+/* .img-link div {
 	position: absolute;
 	bottom: auto;
 	right: auto;
@@ -27,26 +27,26 @@ body {
 	font-size: .5em;
 	-webkit-transition: visibility 0s, opacity 0.5s linear;
 	transition: visibility 0s, opacity 0.5s linear;
-}
+} */
 
 /* Hover on Parent Container */
-.img-link:hover {
+/* .img-link:hover {
 	cursor: pointer;
-}
+} */
 
-.img-link:hover div {
+/* .img-link:hover div {
 	width: 300px;
 	padding: 8px 15px;
 	visibility: visible;
 	opacity: 0.9;
-}
+} */
 
-.img-link:hover p {
+/* .img-link:hover p {
 	width: 300px;
 	padding: 8px 15px;
 	visibility: visible;
 	opacity: 0.9;
-}
+} */
 
 /* .rating-container {
 	display: flex;
@@ -149,11 +149,6 @@ body {
 		-ms-transform: rotate(360deg);
 		transform: rotate(360deg);
 	}
-}
-
-.hidden {
-	opacity: 0;
-	visibility: hidden;
 }
 
 @media only screen and (max-width: 768px) {

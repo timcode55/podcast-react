@@ -1,30 +1,35 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 // import CardList from './/components/CardList/CardList';
 import axios from 'axios';
 import './App.css';
-import CardList from './components/CardList/CardList';
+// import CardList from './components/CardList/CardList';
 import Header from './components/Header/Header';
-import listenNotesPodcasts from './listennotes-array';
-import { PodcastProvider } from './context/PodcastContext';
+// import listenNotesPodcasts from './listennotes-array';
 import { PodcastContext } from './context/PodcastContext';
+// import { PodcastProvider } from './context/PodcastContext';
 
 function App() {
-	const [ state, setState ] = useState({
-		podcasts: []
-	});
+	const [ podcasts, setPodcasts ] = useState([]);
+	const [ state, setState ] = useContext(PodcastContext);
+
+	useEffect(
+		() => {
+			getApiData(Number(state.category));
+			console.log(state.category, 'state.category in useeffect');
+		},
+		[ state ]
+	);
 
 	useEffect(() => {
 		getApiData(67);
+		setState({ page: 1 });
 	}, []);
+
 	const getApiData = (genreId) => {
 		// console.log(genreId, 'genreId Listen');
-		let page = 1;
+		let page = state.page;
 		fetch(
-			'https://listen-api.listennotes.com/api/v2/best_podcasts?genre_id=' +
-				genreId +
-				'&page=' +
-				page +
-				'&region=us&safe_mode=0',
+			`https://listen-api.listennotes.com/api/v2/best_podcasts?genre_id=${genreId}&page=${page}&region=us&safe_mode=0`,
 			{
 				method: 'GET',
 				headers: {
@@ -50,7 +55,7 @@ function App() {
 								console.log(error);
 							});
 					}
-					const podState = await setState({ podcasts: [ data.podcasts ] });
+					const podState = await setPodcasts([ data.podcasts ]);
 				};
 				getRating();
 
@@ -59,11 +64,7 @@ function App() {
 		});
 	};
 
-	return (
-		<PodcastProvider value="will">
-			<Header podcasts={state.podcasts} getApiData={getApiData} />
-		</PodcastProvider>
-	);
+	return <Header podcasts={podcasts} getApiData={getApiData} />;
 }
 
 export default App;
